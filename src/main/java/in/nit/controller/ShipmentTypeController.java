@@ -1,5 +1,7 @@
 package in.nit.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +53,15 @@ public class ShipmentTypeController {
 		}
 		
 		//3. Display data
+		@GetMapping("/all")
+		public String fetchAll(Model model) {
+			
+			List<ShipmentType> list  =service.getAll();
+			model.addAttribute("list",list);
+			return "ShipmentTypeData";
+			
+		}
+		
 		//4. Remove one by Id
 		//5. Show Edit Page with data
 		//6. Update: on click update
